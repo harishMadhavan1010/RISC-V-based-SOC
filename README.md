@@ -1,2 +1,2 @@
 # RISC-V based SOC
-This report is my interpretation of Physical Design Flow.
+This repository consists of weekly updates on the project.
