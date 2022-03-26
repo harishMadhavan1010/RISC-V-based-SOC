@@ -35,6 +35,10 @@ This directory is dedicated to explaining/reporting my design of PLL.
   
   ![Circuit Diagram](../Week%202/images/Capture3.PNG)
   
+  The transistor-level implementation of this circuit is given below.
+  
+  ![PFD_Tran](../Week%202/images/Capture11.PNG)
+  
   `NOTE 1: All PFDs are vulnerable to dead zone i.e. they take time to act if there is a difference in phase and if the difference is minute, the DOWN/UP signal might be noisy.`
   
   `NOTE 2: Our design is able to detect differences in frequency as well. DOWN/UP corresponds to output having higher/lower frequency than the reference.`
@@ -55,11 +59,13 @@ This directory is dedicated to explaining/reporting my design of PLL.
   
   <ins>**Frequency Divider:**</ins>
   
-  Frequency Divider (by N) lets us multiply the output signal (by N). The circuit diagram for Frequency Divider (by 2) is shown below.
+  Frequency Divider (by N) lets us multiply the output signal (by N). The transistor-level implementation for the Frequency Divider (by 2) is shown below.
   
   ![Freq Div](../Week%202/images/Capture7.PNG)
   
-  `NOTE: For obtaining 8x multiplier, we need 3 Flip Flops as opposed to just 1.`
+  `NOTE 1: The transmission gates and inverters connected in series together form a D - Flip Flop.`
+  
+  `NOTE 2: For obtaining 8x multiplier, we need 3 Flip Flops as opposed to just one.`
   
   ### Required Tools
   | Tool    | Usage |
