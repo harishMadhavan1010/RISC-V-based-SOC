@@ -87,10 +87,13 @@ This directory is dedicated to explaining/reporting my design of PLL.
   
   ![Install](../Week%202/images/Capture8.PNG)
   
-  Also, to make the process bearable, it is advised to 
+  Once necessary files are installed/downloaded, the desktop will look something like this.
+  
+  ![Desktop](../Week%202/images/Capture12.PNG)
 
 ## Day 2
 
+  
 
 ## Credits
 
