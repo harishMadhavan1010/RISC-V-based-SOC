@@ -23,7 +23,7 @@ This directory is dedicated to explaining/reporting my design of PLL.
 
   `Note: Spectral Purity implies an absence of frequency or phase noise i.e. clock edges are launched/latched at the right time.`
   
-  ** **
+   
     
   ### PLL Components Description
   
@@ -63,7 +63,7 @@ This directory is dedicated to explaining/reporting my design of PLL.
   
   `NOTE: For obtaining 8x multiplier, we need 3 Flip Flops as opposed to just 1.`
   
-  ** **
+   
   
   ### Required Tools
   
