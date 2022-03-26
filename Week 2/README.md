@@ -23,8 +23,6 @@ This directory is dedicated to explaining/reporting my design of PLL.
 
   `Note: Spectral Purity implies an absence of frequency or phase noise i.e. clock edges are launched/latched at the right time.`
   
-   
-    
   ### PLL Components Description
   
   This section discusses the various components specified in the block diagram in detail.
@@ -63,14 +61,26 @@ This directory is dedicated to explaining/reporting my design of PLL.
   
   `NOTE: For obtaining 8x multiplier, we need 3 Flip Flops as opposed to just 1.`
   
-   
-  
   ### Required Tools
   
+  > ngspice: Transistor-level circuit simulation
+  > Magic: Layout Design and Parasitics Extraction
   
+  The following commands are executed in the terminal to use these tools:
+  
+  ![Tools](../Week%202/images/Capture9.PNG)
+  
+  The following is the development flow of this PLL.
+  
+  ![Flow](../Week%202/images/Capture10.PNG)
   
   ### Setup
   
+  To install the files, the following commands are executed in the terminal.
+  
+  ![Install](../Week%202/images/Capture8.PNG)
+  
+  Also, to make the process bearable, it is advised to 
 
 ## Day 2
 
