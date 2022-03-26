@@ -11,8 +11,8 @@ This directory is dedicated to explaining/reporting my design of PLL.
 * [Credits](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%202/README.md#credits)
 * [References](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%202/README.md#references)
 
-## Day 1:
-  ### PLL Overview:
+## Day 1
+  ### PLL Overview
   PLLs are used to mimic a reference signal such that the resulting signal has a frequency same as that of or a multiple of the frequency of the reference signal and a constant phase difference.
   
   ![PLL Block Diagram](../Week%202/images/Capture2.PNG)
@@ -23,11 +23,11 @@ This directory is dedicated to explaining/reporting my design of PLL.
 
   `Note: Spectral Purity implies an absence of frequency or phase noise i.e. clock edges are launched/latched at the right time.`
     
-  ### PLL Components Description:
+  ### PLL Components Description
   
   This section discusses the various components specified in the block diagram in detail.
   
-  **Phase Frequency Detector:**
+  <ins>**Phase Frequency Detector:**</ins>
   
   Phase Frequency Detector takes in the reference and the output signal and checks if there is a phase difference and tells us whether the output signal is leading/lagging (represented as DOWN/UP respectively). The following are the state diagram representation and the circuit diagram respectively.
   
@@ -39,24 +39,40 @@ This directory is dedicated to explaining/reporting my design of PLL.
   
   `NOTE 2: Our design is able to detect differences in frequency as well. DOWN/UP corresponds to output having higher/lower frequency than the reference.`
   
-  **Charge Pump:**
+  <ins>**Charge Pump:**</ins>
+  
+  Charge Pump is used to convert the digital measure of phase/frequency different to an analog representation to control the VCO. This is implemented using the current-steering circuit (backed up by a LPF) whose transistor-level implementation is given below:
+  
+  ![Current Steering](../Week%202/images/Capture5.PNG)
+  
+  We use a Low Pass Filter as well to remove any fluctuations and to keep the output stable.
+  
+  <ins>**Voltage Controlled Oscillator:**</ins>
+  
+  Voltage Controlled Oscillator creates a periodic output signal whose frequency corresponds to the voltage supplied as the input. The transistor-level of VCO is given below.
+  
+  ![VCO](../Week%202/images/Capture6.PNG)
+  
+  <ins>**Frequency Divider:**</ins>
+  
+  Frequency Divider (by N) lets us multiply the output signal (by N). The circuit diagram for Frequency Divider (by 2) is shown below.
+  
+  ![Freq Div](../Week%202/images/Capture7.PNG)
+  
+  `NOTE: For obtaining 8x multiplier, we need 3 Flip Flops as opposed to just 1.`
+  
+  ### Required Tools
   
   
   
-  **Voltage Controlled Oscillator:**
-  
-  
-  
-  ### Required Tools:
-  
-  ### Setup:
+  ### Setup
   
 
-## Day 2:
+## Day 2
 
 
-## Credits:
+## Credits
 
 
-## References:
+## References
 
