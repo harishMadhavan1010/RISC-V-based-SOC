@@ -21,9 +21,14 @@ This directory is dedicated to explaining/reporting my design of PLL.
  
  ![Magnitude Spectrum](../Week%202/images/Capture1.PNG)
  
- > Note: Spectral Purity implies an absence of frequency or phase noise i.e. clock edges are launched/latched at the right moments.
+   Note: Spectral Purity implies an absence of frequency or phase noise i.e. clock edges are launched/latched at the right moments.
     
   ### PLL Components Description:
+  **Phase Frequency Detector:
+  
+  **Charge Pump
+  
+  **Voltage Controlled Oscillator
   
   ### Required Tools:
   
