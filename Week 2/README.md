@@ -19,7 +19,7 @@ This directory is dedicated to explaining/reporting my design of PLL.
     
  > Note: Spectral Purity implies an absence of frequency or phase noise i.e. clock edges are launched/latched at the right moments.
  
- ![Magnitude Spectrum](../Week_2/images/Capture1.PNG)
+ ![Magnitude Spectrum](../Week%202/images/Capture1.PNG)
     
   ### PLL Component Description:
   
