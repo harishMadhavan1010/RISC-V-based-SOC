@@ -27,7 +27,7 @@ This directory is dedicated to explaining/reporting my design of PLL.
   
   This section discusses the various components specified in the block diagram in detail.
   
-  **Phase Frequency Detector:
+  **Phase Frequency Detector:**
   
   Phase Frequency Detector takes in the reference and the output signal and checks if there is a phase difference and tells us whether the output signal is leading/lagging (represented as DOWN/UP respectively). The following are the state diagram representation and the circuit diagram respectively.
   
@@ -39,11 +39,11 @@ This directory is dedicated to explaining/reporting my design of PLL.
   
   `NOTE 2: Our design is able to detect differences in frequency as well. DOWN/UP corresponds to output having higher/lower frequency than the reference.`
   
-  **Charge Pump:
+  **Charge Pump:**
   
   
   
-  **Voltage Controlled Oscillator:
+  **Voltage Controlled Oscillator:**
   
   
   
