@@ -62,9 +62,10 @@ This directory is dedicated to explaining/reporting my design of PLL.
   `NOTE: For obtaining 8x multiplier, we need 3 Flip Flops as opposed to just 1.`
   
   ### Required Tools
-  
-  > ngspice: Transistor-level circuit simulation
-  > Magic: Layout Design and Parasitics Extraction
+  | Tool    | Usage |
+  |---------|-------|
+  | ngspice | Transistor-level circuit simulation|
+  | Magic | Layout Design and Parasitics Extraction|
   
   The following commands are executed in the terminal to use these tools:
   
