@@ -21,12 +21,17 @@ This directory is dedicated to explaining/reporting my design of PLL.
  
   ![Magnitude Spectrum](../Week%202/images/Capture1.PNG)
 
-    Note: Spectral Purity implies an absence of frequency or phase noise i.e. clock edges are launched/latched at the right moments.
+  `Note: Spectral Purity implies an absence of frequency or phase noise i.e. clock edges are launched/latched at the right time.`
     
   ### PLL Components Description:
   
+  This section discusses the various components specified in the block diagram briefly.
+  
   **Phase Frequency Detector:
   
+  Phase Frequency Detector takes in the reference and the output signal and checks if there is a phase difference and tells us whether the output signal is leading/lagging. The following are the state diagram representation and the circuit diagram respectively.
+  
+  ![FSM Representation](../Week%202/images/Capture4.PNG)
   
   
   **Charge Pump:
