@@ -18,6 +18,8 @@ This directory is dedicated to explaining/reporting my design of PLL.
   We use PLL mainly to obtain a precise clock signal without any frequency or phase noise while at the same time, running at our desired frequency. While Quartz Crystals alone have superior spectral purity, they aren't flexible. While Voltage-Controlled Oscillators alone are flexible with respect to their frequency, they don't have favourable noise characteristics. 
     
  > Note: Spectral Purity implies an absence of frequency or phase noise i.e. clock edges are launched/latched at the right moments.
+ 
+ ![Magnitude Spectrum](../main/images/Capture1.PNG)
     
   ### PLL Component Description:
   
