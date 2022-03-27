@@ -8,6 +8,10 @@ This directory is dedicated to explaining/reporting my design of PLL.
   - [Required Tools](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%202/README.md#required-tools)
   - [Setup](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%202/README.md#setup)
 * [Day 2: Design + Simulations](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%202/README.md#day-2)
+  - [Prelayout Simulation]()
+  - [Layout Design]()
+  - [Postlayout Simulation]()
+  - [Tapeout Design]()
 * [Credits](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%202/README.md#credits)
 * [References](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%202/README.md#references)
 
@@ -91,12 +95,82 @@ This directory is dedicated to explaining/reporting my design of PLL.
   
   ![Desktop](../Week%202/images/Capture12.PNG)
 
-## Day 2
-
+## Day 2 
   
-
+  (WIP)
+  
+  ### Prelayout Simulation
+  
+  Frequency Divider:
+  
+  ![FreqDiv](../Week%202/images/Capture13.PNG)
+  
+  Charge Pump (with Down/Up both grounded to measure leakage):
+  
+  ![CPleak](../Week%202/images/Capture14.PNG)
+  
+  Charge Pump:
+  
+  ![CP](../Week%202/images/Capture15.PNG)
+  
+  ![CP2](../Week%202/images/Capture16.PNG)
+  
+  VCO:
+  
+  ![VCO](../Week%202/images/Capture17.PNG)
+  
+  PFD:
+  
+  ![PFD](../Week%202/images/Capture18.PNG)
+  
+  Complete Simulation:
+  
+  ![Complete](../Week%202/images/Capture19.PNG)
+  
+  ![Completezoom1](../Week%202/images/Capture20.PNG)
+  
+  ![Completezoom2](../Week%202/images/Capture21.PNG)
+  
+  ### Layout Design
+  
+  Frequency Divider:
+  
+  ![FreqDivlay](../Week%202/images/Capture22.PNG)
+  
+  Phase Frequency Detector:
+  
+  ![PFDlay](../Week%202/images/Capture23.PNG)
+  
+  Charge Pump:
+  
+  ![CPlay](../Week%202/images/Capture24.PNG)
+  
+  Voltage Controlled Oscillator:
+  
+  ![VCOlay](../Week%202/images/Capture25.PNG)
+  
+  ### Postlayout Simulation
+  
+  PFD (@10ns):
+  
+  ![PFD10](../Week%202/images/Capture26.PNG)
+  
+  PFD (@1ns):
+  
+  ![PFD01](../Week%202/images/Capture27.PNG)
+  
+  Rest still WIP
+  
+  ### Tapeout Design
+  
+  WIP
+  
 ## Credits
 
+- [Kunalg Github Profile](https://github.com/kunalg123)
+- [Lakshmi S Github Profile](https://github.com/lakshmi-sathi)
 
 ## References
-
+1. [Skywater-PDK](https://github.com/google/skywater-pdk)
+2. [VSDIAT](http://vsdiat.com/)
+3. 
