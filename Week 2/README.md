@@ -173,4 +173,4 @@ This directory is dedicated to explaining/reporting my design of PLL.
 ## References
 1. [Skywater-PDK](https://github.com/google/skywater-pdk)
 2. [VSDIAT](http://vsdiat.com/)
-3. 
+3. [VLSI System Design](https://www.vlsisystemdesign.com/)
