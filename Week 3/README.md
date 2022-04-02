@@ -4,7 +4,6 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
 ## Table of Contents
 * [Day 3: Digital Logic with TL-Verilog in Makerchip IDE]()
   - [Logic Gates]()
-  - [Makerchip Platform]()
   - [Combinational Logic]()
   - [Sequential Logic]()
   - [Pipelined Logic]()
@@ -27,3 +26,7 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   |  XNOR(A,B)|¬A^¬B v A^B|   !(A^B) |
 
   The logic gates are fundamental, using which bigger circuits are constructed.
+
+  ### Combinational Logic
+  
+  
