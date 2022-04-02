@@ -68,3 +68,4 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   ![SeqCalc](../Week%203/images/Capture7.PNG)
   
   The addition of the line `$val1 = >>1$out` creates a DFF at the end of the output which is then fedback to `$val1`.
+[
