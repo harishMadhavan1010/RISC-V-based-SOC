@@ -35,7 +35,7 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   
   Now, let's consider a multiplexer.
   
-  ![Multiplexer](../Week%203/images/Capture2.PNG)
+  ![Multiplexer](../Week%203/images/Capture2.png)
   
   In this circuit, the n selection lines (n bits) control the output by selecting a particular input (out of the 2^n inputs). Choose n=1 for simplicity. Here, there is only one selection line (1 bit) which can possess two values. If selection line is 0, the output takes in the value of the first input; if it is 1, the output takes in the value of the second input. We can easily implement this using ternary operator. Let sel be the selection line, let A and B be the first and the second input (respectively) and let y be the output.
 
