@@ -29,7 +29,7 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
 
   ### Combinational Logic
   
-  We discuss some basic combinational logic circuits like Multiplexers, Adders, etc. Let's first consider some adder circuits. 
+  Let's discuss some basic combinational logic circuits like Multiplexers, Adders, etc. Let's first consider some adder circuits. 
   
   A Half Adder takes in two inputs (A, B) and gives two outputs (S, Cout) where A and B represent the addends, S represents the sum and Cout represents the carry. Here, `S = XOR(A,B)` and `Cout = AND(A,B)`. Similary, a Full Adder takes in three inputs (A, B, Cin) and spits out two outputs (S, Cout). In this case, Cin is the input carry which may have happened because of output carry of the previous stage. In this case, `S = XOR(A,B,C) = XOR(XOR(A,B),C)` and `Cout = OR(AND(A,B), AND(Cin, XOR(A,B))`. From these examples, one can infer that more complex adder circuits arise out of smaller circuits (logic gates).
   
@@ -48,3 +48,23 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   Finally comes a small exercise wherein I have constructed a small 32-bit calculator using various TL-V operators.
   
   ![CombCalc](../Week%203/images/Capture1.PNG)
+  
+  ### Sequential Logic
+  
+  Sequential Logic is sequenced by a clock signal. Let's start out by considering the simplest sequential circuit i.e. the D-Flip Flop. A D-Flip Flop transitions next state to current state on a rising clock edge.
+  
+  ![DFF](../Week%202/images/Capture4.PNG)
+  
+  A sequential circuit can be used as a state machine with DFFs and combinational logic, sequenced by a clk signal.
+  
+  ![SeqCir](../Week%202/images/Capture5.PNG)
+  
+  Let's look at a free-running 4-bit counter. This counter counts from 0 to F (which is a sequence of numbers with next number equal to the current number incremented by 1) and rolls over beyond that. We can reimagine the output of the counter as the output of the adder circuit whose inputs are the previous output of the adder and 1. This circuit is modelled in TL-Verilog as:
+  
+  ![Counter](../Week%202/images/Capture6.PNG)
+  
+  Now, with this knowledge, we can update our calculator circuit to include past inputs as well, as shown below.
+  
+  ![SeqCalc](../Week%202/images/Capture7.PNG)
+  
+  The addition of the line `$val1 = >>1$out` creates a DFF at the end of the output which is then fedback to `$val1`.
