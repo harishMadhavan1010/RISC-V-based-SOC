@@ -76,6 +76,7 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   The above code uses Pythagoras' Theorem to compute the value of the hypotenuse. The `|calc` creates a pipeline. `@1`, `@2`, `@3` basically sectors the pipeline up as stages.
   
   Reframing our calculator and our counter to showcase the formerly unmentioned pipelines:
+  
   ![Calccnt](../Week%203/images/Capture9.PNG)
   
   Now, in order to deal with high frequency clocks, we have to add more stages to our pipeline. With more stages shifts alignment of output being fed back to the input `val1`. We also have to ensure that the multiplexer doesn't keep spewing out garbage values by using a 2-bit counter.
