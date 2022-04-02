@@ -12,7 +12,7 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
 * [Day 5: Pipelining and completing your CPU]()
 
 
-## Day 1
+## Day 3
   ### Logic Gates
   
   |   Name    | Function  |  Syntax  |
@@ -25,8 +25,16 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   |   NOR(A,B)| ¬(AvB)    |   !(A|B) |
   |  XNOR(A,B)|¬A^¬B v A^B|   !(A^B) |
 
-  The logic gates are fundamental, using which bigger circuits are constructed.
+  These are the fundamental logic gates which not only help us build bigger circuits but also serve as a conceptual latching point in understanding more advanced concepts or ideas.
 
   ### Combinational Logic
   
+  We discuss some basic combinational logic circuits like Multiplexers, Adders, etc. Let's first consider some adder circuits. 
   
+  A Half Adder takes in two inputs (A, B) and gives two outputs (S, Cout) where A and B represent the addends, S represents the sum and Cout represents the carry. Here, S = XOR(A,B) and Cout = AND(A,B). Similary, a Full Adder takes in three inputs (A, B, Cin) and spits out two outputs (S, Cout). In this case, Cin is the input carry which may have happened because of output carry of the previous stage. In this case, S = XOR(A,B,C) = XOR(XOR(A,B),C) and Cout = OR(AND(A,B), AND(Cin, XOR(A,B)). From these examples, one can infer that more complex adder circuits arise out of smaller circuits (logic gates).
+  
+  Now, let's consider a multiplexer.
+  
+  ![Multiplexer](../Week%202/images/Capture2.PNG)
+  
+  In this circuit, the n selection lines (n bits) control the output by selecting a particular input (out of the 2^n inputs). Choose n=1 for simplicity. Here, there is only one selection line (1 bit) which can possess two values. If selection line is 0, the output takes in the value of the first input; if it is 1, the output takes in the value of the second input. We can easily implement this using ternary operator. Let sel be the selection line and let be the
