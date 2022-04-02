@@ -15,12 +15,15 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
 
 ## Day 1
   ### Logic Gates
-  |   Name    | Function |  Syntax  |
-  |-----------|----------|----------|
-  |   NOT(A)  |   ¬A     |x|
-  |  AND(A,B) |   A^B    |y|
-  |   OR(A,B) |   AvB    |z|
-  |  XOR(A,B) |¬A^B v ¬B^A|a|
-  |  NAND(A,B)| ¬(A^B)   |b|
-  |   NOR(A,B)| ¬(AvB)   |c|
-  |  XNOR(A,B)|¬A^¬B v A^B|d|
+  
+  |   Name    | Function  |  Syntax  |
+  |-----------|-----------|----------|
+  |   NOT(A)  |   ¬A      |       !A |
+  |  AND(A,B) |   A^B     |      A&B |
+  |   OR(A,B) |   AvB     |      A|B |
+  |  XOR(A,B) |¬A^B v ¬B^A|      A^B |
+  |  NAND(A,B)| ¬(A^B)    |   !(A&B) |
+  |   NOR(A,B)| ¬(AvB)    |   !(A|B) |
+  |  XNOR(A,B)|¬A^¬B v A^B|   !(A^B) |
+
+  The logic gates are fundamental, using which bigger circuits are constructed.
