@@ -102,5 +102,40 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   
   ![Calcmemrec](../Week%203/images/Capture14.PNG) 
   
-## Day 4
+## Day 4: Coding a RISC-V subset
   
+  The following is the pipelined version of the microarchitecture we are going to implement using TL-Verilog. The important parts are highlighted and will be described as we move on further.
+  
+  ![uarch](../Week%203/images/Capture17.PNG)
+  
+  We begin by implementing the program counter which increments by 4 bytes i.e. increments by 1 instruction. Then, we include instruction memory and make appropriate connections to perform Instruction Fetch.
+  
+  ![PC](../Week%203/images/Capture15.PNG)
+  
+  ![IFetch](../Week%203/images/Capture16.PNG)
+  
+  Then comes the decoding part. First up, the instruction type is determined by the instr[6:2]. There are 6 differents types of instructions i.e. R, I, S, B, J and U. Each of these have its own way of addressing. We then extract various fields out of the instruction like immediate values, rs1, rs2, etc. To illustrate, the imm entries can be extracted as follows:
+  
+  ![ImmDecode](../Week%203/images/Capture19.PNG)
+  
+  The TL-V to perform these is shown below:
+  
+  ![TypeIden](../Week%203/images/Capture21.PNG)
+  
+  ![ImmDec2](../Week%203/images/Capture22.PNG)
+  
+  The other fields are opcode, rs1, rs2, funct3, funct7 and rd. We can know when they occur and eventually represent instructions as a bunch of instruction fields so that when the CPU sees the fields, it can recognize which instruction it is and perform suitable operation.
+  
+  ![validWhen](../Week%203/images/Capture23.PNG)
+  
+  ![validityInstr](../Week%203/images/Capture24.PNG)
+  
+  We then decode various simple instructions like ADD, ADDI and BEQ! The decoding procedure is fairly simple. Each operation depends on opcode and funct3 and a few also depend on funct7 as well. The decoding procedure is illustrated below.
+  
+  ![InstDecode](../Week%203/images/Capture25.PNG)
+  
+  We now include Register File and learn how to interface it and read it. The register file we are using is `2-read, 1-write register file` which has two sources to read from and one destination to write to. This part is fairly simple and the code for which is shown below.
+  
+  ![RegFileRead](../Week%203/images/Capture26.PNG)
+  
+  (WIP)
