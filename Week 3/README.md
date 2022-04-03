@@ -7,7 +7,6 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   - [Combinational Logic]()
   - [Sequential Logic]()
   - [Pipelined Logic]()
-  - [State]()
 * [Day 4: Coding a RISC-V CPU subset]()
 * [Day 5: Pipelining and completing your CPU]()
 
@@ -68,8 +67,10 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   ![SeqCalc](../Week%203/images/Capture7.PNG)
   
   The addition of the line `$val1 = >>1$out` creates a DFF at the end of the output which is then fedback to `$val1`.
-
-  Note how DFF basically is used to shift back time by one unit. We can now think of the entire circuit as one big pipeline. The pipeline is divided into various sectors/stages with the introduction of DFF prior to the next stage. If we place DFFs at appropriate nodes, we can control the timing of our circuit. This concept is called retiming. We illustrate this in the following example.
+  
+  ### Pipelined Logic
+  
+  Note how the examples showed that DFF basically shifts it's input back by one time unit. We can now think of the entire circuit as one big pipeline. The pipeline is divided into various sectors/stages with the introduction of DFF prior to the next stage. If we place DFFs at appropriate nodes, we can control the timing of our circuit. This concept is called retiming. We illustrate this in the following example.
   
   ![Pythagoras](../Week%203/images/Capture8.PNG)
   
@@ -101,4 +102,5 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   
   ![Calcmemrec](../Week%203/images/Capture14.PNG) 
   
+## Day 4
   
