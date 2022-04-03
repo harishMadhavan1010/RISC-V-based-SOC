@@ -8,7 +8,7 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   - [Sequential Logic]()
   - [Pipelined Logic]()
 * [Day 4: Coding a RISC-V CPU subset]()
-* [Day 5: Pipelining and completing your CPU]()
+* [Day 5: Pipelining and completing the CPU]()
 
 
 ## Day 3
