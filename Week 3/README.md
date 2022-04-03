@@ -79,4 +79,26 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   
   ![Calccnt](../Week%203/images/Capture9.PNG)
   
-  Now, in order to deal with high frequency clocks, we have to add more stages to our pipeline. With more stages shifts alignment of output being fed back to the input `val1`. We also have to ensure that the multiplexer doesn't keep spewing out garbage values by using a 2-bit counter.
+  Now, in order to deal with high frequency clocks, we have to add more stages to our pipeline. With more stages shifts alignment of output being fed back to the input `val1`. We also have to ensure that the multiplexer doesn't keep spewing out garbage values by using a 2-bit counter. This also takes care of clock gating.
+  
+  ![Calcnew](../Week%203/images/Capture10.PNG) 
+
+  Now, we introduce ourselves a new syntax `?$valid` where `$valid` is a variable which defines when a certain operation is valid and `?<var>` ensures that the block turns off whenever <var> is not high. This provides a cleaner design and makes it easy to debug.
+  
+  The following is the pythagoras theorem example but with validity syntax included in it.
+  
+  ![Pythval](../Week%203/images/Capture11.PNG)
+  
+  We now also include the total distance by accumulating individual distances.
+  
+  ![Pythvalacc](../Week%203/images/Capture12.PNG)
+  
+  The following is the calculator with validity syntax included in it.
+  
+  ![Calcval](../Week%203/images/Capture13.PNG) 
+  
+  We now also include memory and recall features by extending the multiplexer.
+  
+  ![Calcmemrec](../Week%203/images/Capture14.PNG) 
+  
+  
