@@ -2,13 +2,13 @@
 This directory is dedicated to explaining/reporting my design of RISC-V core using TL-Verilog.
 
 ## Table of Contents
-* [Day 3: Digital Logic with TL-Verilog in Makerchip IDE]()
-  - [Logic Gates]()
-  - [Combinational Logic]()
-  - [Sequential Logic]()
-  - [Pipelined Logic]()
-* [Day 4: Coding a RISC-V CPU subset]()
-* [Day 5: Pipelining and completing the CPU]()
+* [Day 3: Digital Logic with TL-Verilog in Makerchip IDE](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#day-3)
+  - [Logic Gates](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#logic-gates)
+  - [Combinational Logic](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#combinational-logic)
+  - [Sequential Logic](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#sequential-logic)
+  - [Pipelined Logic](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#pipelined-logic)
+* [Day 4: Coding a RISC-V CPU subset](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#day-4)
+* [Day 5: Pipelining and completing the CPU](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#day-5)
 
 
 ## Day 3
@@ -138,4 +138,54 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   
   ![RegFileRead](../Week%203/images/Capture26.PNG)
   
-  (WIP)
+  Then, we compute some simple instructions like ADD and ADDI (which make up a part of the ALU). We then deal with actually writing that data to the Register File. This is illustrated below.
+  
+  > NOTE: Register 0 can't be written to.
+  
+  ![ALU](../Week%203/images/Capture27.PNG)
+  
+  ![RegFileWr](../Week%203/images/Capture28.PNG)
+  
+  Then comes the part where branching instructions are implemented! These instructions are conditional and when the condition is met with, the PC takes another value i.e. `br_tgt_pc`. This is fairly simple if we use ternary operators and implement each one of the six instructions.
+  
+  ![Branch](../Week%203/images/Capture29.PNG)
+  
+  We finally check the instructions through the handy visualization implementation provided in the Makerchip IDE. The following images show that the simulation was successful. A more detailed visualization containing the instructions is also shown after this.
+  
+  ![SimComm](../Week%203/images/Capture31.PNG)
+  
+  ![SimPass](../Week%203/images/Capture30.PNG)
+  
+  <details><summary><b><u><ins>Click here to check the detailed visualization!</ins></u></b></summary>
+  
+  <p>
+  
+  ```
+    // External to function:
+   m4_asm(ADD, r10, r0, r0)             // Initialize r10 (a0) to 0.
+   // Function:
+   m4_asm(ADD, r14, r10, r0)            // Initialize sum register a4 with 0x0
+   m4_asm(ADDI, r12, r10, 1010)         // Store count of 10 in register a2.
+   m4_asm(ADD, r13, r10, r0)            // Initialize intermediate sum register a3 with 0
+   // Loop:
+   m4_asm(ADD, r14, r13, r14)           // Incremental addition
+   m4_asm(ADDI, r13, r13, 1)            // Increment intermediate register by 1
+   m4_asm(BLT, r13, r12, 1111111111000) // If a3 is less than a2, branch to label named <loop>
+   m4_asm(ADD, r10, r14, r0)            // Store final result to register a0 so that it can be read by main program
+  ```
+    
+  Note that the reset stays for some time, taking up a few cycles at the start. So, the instructions start executing from the 4th cycle. Each register is loaded with a value equal to the register's location in the register file initially. The main ones we care about are x10, x12, x13 and x14. x10 is to store the final value. x12 and x13 basically are used to form a loop by storing the limitting condition and incrementing the iterating variable respectively. x14 stores sum of natural numbers from 1 to the value of x13. The instructions themselves are self-explanatory.
+  
+  ![Visualization](../Week%203/images/Capture32.PNG)
+  
+  ![Visualization](../Week%203/images/Capture33.PNG)
+  ![Visualization](../Week%203/images/Capture34.PNG)
+  ![Visualization](../Week%203/images/Capture35.PNG)
+  ![Visualization](../Week%203/images/Capture36.PNG)
+  ![Visualization](../Week%203/images/Capture37.PNG)
+  ![Visualization](../Week%203/images/Capture38.PNG)
+  ![Visualization](../Week%203/images/Capture39.PNG)
+  ![Visualization](../Week%203/images/Capture40.PNG)
+  
+  </p>
+  </details>
