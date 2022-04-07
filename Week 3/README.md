@@ -189,3 +189,6 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   
   </p>
   </details>
+
+  ## Day 5
+   As of now, I have been facing bugs. To be particular, when I implement the 3-cycle valid signal, the program counter and the instruction execution don't synchronize properly and branching instructions don't work as intended either. (WIP)
