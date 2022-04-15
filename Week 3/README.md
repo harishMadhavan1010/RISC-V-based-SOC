@@ -251,47 +251,47 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   
   <p>
     
-    ![Visualization](../Week%203/images/Capture51.PNG)
+  ![Visualization](../Week%203/images/Capture51.PNG)
     
-    > Note how mentioning r0 as source operand didn't influence at all in determining where the data is stored in Data Memory and a random value "100" is kept at the end. Somehow, we ended up at d1.
+  > Note how mentioning r0 as source operand didn't influence at all in determining where the data is stored in Data Memory and a random value "100" is kept at the end. Somehow, we ended up at d1.
     
-    ![Visualization](../Week%203/images/Capture52.PNG)
+  ![Visualization](../Week%203/images/Capture52.PNG)
     
-    > Load takes two more cycles to write in the Register File because: we need to avoid hazards which happens when load instruction and instruction using RF on the same register.
+  > Load takes two more cycles to write in the Register File because: we need to avoid hazards which happens when load instruction and instruction using RF on the same register.
     
-    ![Visualization](../Week%203/images/Capture53.PNG)
+  ![Visualization](../Week%203/images/Capture53.PNG)
     
-    > Note how instructions aren't executed or register file is written to. It's because of the `$valid` which shuts off hardware in the later stages (like ALU) from executing.
+  > Note how instructions aren't executed or register file is written to. It's because of the `$valid` which shuts off hardware in the later stages (like ALU) from executing.
     
-    ![Visualization](../Week%203/images/Capture54.PNG)
+  ![Visualization](../Week%203/images/Capture54.PNG)
     
-    > Note how the load instruction finally writes to register file in x15.
+  > Note how the load instruction finally writes to register file in x15.
     
-    ![Visualization](../Week%203/images/Capture55.PNG)
+  ![Visualization](../Week%203/images/Capture55.PNG)
     
-    > Note how the instructions which weren't executed after load instruction is used are now executed. Also note how r1 and `1000` points to d2 now. After noticing the code, we can now see that 1000 is the immediate value and r1 is the source operand.
+  > Note how the instructions which weren't executed after load instruction is used are now executed. Also note how r1 and `1000` points to d2 now. After noticing the code, we can now see that 1000 is the immediate value and r1 is the source operand.
     
-    ![Visualization](../Week%203/images/Capture56.PNG)
+  ![Visualization](../Week%203/images/Capture56.PNG)
     
-    > Note how r2 and `1100` points to d3 now. "01 - 1, 10 - 2 and 11 - 3" Here, we can notice that either the source operand and the immediate value directly decides which register we are going to end up at in data memory. But in reality, this is just a trick, it actually depends only on immediate value (in this case) because the first two bits of `$src1_value + $imm` aren't considered while taking address of Data Memory.
+  > Note how r2 and `1100` points to d3 now. "01 - 1, 10 - 2 and 11 - 3" Here, we can notice that either the source operand and the immediate value directly decides which register we are going to end up at in data memory. But in reality, this is just a trick, it actually depends only on immediate value (in this case) because the first two bits of `$src1_value + $imm` aren't considered while taking address of Data Memory.
     
-    ![Visualization](../Week%203/images/Capture57.PNG)
+  ![Visualization](../Week%203/images/Capture57.PNG)
     
-    > JAL is very similar to Branch Targets but is unconditional. It takes two cycles just to execute.
+  > JAL is very similar to Branch Targets but is unconditional. It takes two cycles just to execute.
     
-    ![Visualization](../Week%203/images/Capture58.PNG)
+  ![Visualization](../Week%203/images/Capture58.PNG)
     
-    > Like branch instructions and load instructions, jump instructions suffer from this tradeoff.
+  > Like branch instructions and load instructions, jump instructions suffer from this tradeoff.
     
-    ![Visualization](../Week%203/images/Capture59.PNG)
+  ![Visualization](../Week%203/images/Capture59.PNG)
     
-    > Note how ALU returns a value even for jump instructions but this implementation decides not to write in any registers unnecessarily as it might cause unnecessary bugs. By keeping write-enable to register file like the following, one can avoid this issue. 
+  > Note how ALU returns a value even for jump instructions but this implementation decides not to write in any registers unnecessarily as it might cause unnecessary bugs. By keeping write-enable to register file like the following, one can avoid this issue. 
     
-    `$rf_wr_en = ($valid_jump ^ $valid_load ^ $write_valid) || >>2$valid_load;`
+  `$rf_wr_en = ($valid_jump ^ $valid_load ^ $write_valid) || >>2$valid_load;`
     
-    ![Visualization](../Week%203/images/Capture60.PNG)
+  ![Visualization](../Week%203/images/Capture60.PNG)
     
-    > Note how this is just self-loop to stop the program counter from ramping up unnecessarily. 
+  > Note how this is just self-loop to stop the program counter from ramping up unnecessarily. 
     
   </p>
     
