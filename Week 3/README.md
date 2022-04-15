@@ -191,4 +191,51 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   </details>
 
   ## Day 5
-   As of now, I have been facing bugs. To be particular, when I implement the 3-cycle valid signal, the program counter and the instruction execution don't synchronize properly and branching instructions don't work as intended either. (WIP)
+  
+  ### Pipelining the CPU
+  
+  In order to make the RISC-V core run at a high clock frequency, pipelining the CPU into several stages and executing them parallely is a must. However, adding more stages just like that doesn't work because of timing issues.
+
+  ![Pipelining](../Week%203/images/Capture42.PNG)
+  
+  To resolve the issues, we look at the "Waterfall Logic Diagram" (which basically represents feedback loops as set of new time-shifted pipelines). These diagrams make a complex pipeline be understandable physically in the form of waterfalls. Signals flows through nets which may drip down into hypothetical pipelines placed below the existing ones. If the signals drip backward, it goes against our expectations and hence not realizable. These unrealizable nets are hazards.
+  
+  ![Pipelining](../Week%203/images/Capture41.PNG)
+  
+  To fix them requires adding hardware like Flip Flops but in TL-Verilog, it's as simple as using `>>1` or `>>2`. Everything done in Day-4 stays is restructured and timing is ensured as well. This solves pretty much everything, except for branch targets. Determining branch targets isn't easy and so, in this design, for the sake of brevity, I've decided to keep it simple and don't execute (or) write for a few cycles. This is very easy to implement and is shown below. The following basically defines a signal `$valid` such that ALU, branch targets, jumps, register files, etc. operate only as long as the last two instructions aren't branching instructions.
+  
+  ```
+  $valid_taken_br = $taken_br & $valid;
+  $valid = ! (>>1$valid_taken_br || >>2$valid_taken_br);
+  ```
+  
+  Note that hazards exist whenever read and write are in different stages because when the destination register in previous instruction is the source register in current instruction. This happens because of a hypothetical net which forms so that the values we use as source operands are valid. If ignored, this will cause hideous bugs. To fix these bugs, we use multiplexers to select appropriate values as shown below.
+  
+  ![ReadWrite](../Week%203/images/Capture43.PNG)
+  
+  All the other instructions are now taken care of as well including load and store instructions.
+  
+  ![InstrDecode](../Week%203/images/Capture44.PNG)
+  
+  ![Instructions](../Week%203/images/Capture45.PNG)
+  
+  Then, we include Data Memory for utilizing Load and Store instructions. Load takes in a value from Data Memory and write that in Register File. Store instructions takens in the value of the source operand and write that in Data Memory.
+  
+  ![DMem](../Week%203/images/Capture46.PNG)
+  
+  ![Load](../Week%203/images/Capture47.PNG)
+  
+  Finally comes the jump instructions: `JAL` and `JALR`. They are very similar to branches but they are unconditional in nature. Also, JAL jumps relative to Program Counter whereas JALR jumps to a fixed address independent of the current value in Program Counter.
+  
+  ```
+  JAL: $pc + $imm
+  JALR: $src1_value + $imm
+  ```
+  
+  Appropriate changes are made in the `$pc` and `$valid` signal.
+  
+  ![PC](../Week%203/images/Capture49.PNG)
+  
+  ![Valid](../Week%203/images/Capture50.PNG)
+  
+  ### Execution:
