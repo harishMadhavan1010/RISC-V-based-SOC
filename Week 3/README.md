@@ -9,6 +9,9 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   - [Pipelined Logic](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#pipelined-logic)
 * [Day 4: Coding a RISC-V CPU subset](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#day-4)
 * [Day 5: Pipelining and completing the CPU](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#day-5)
+  - [Pipelining the CPU](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#pipelining-the-cpu)
+  - [Execution](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#execution)
+  - [Waveforms](https://github.com/harishMadhavan1010/RISC-V-based-SOC/tree/main/Week%203#waveforms)
 
 
 ## Day 3
@@ -42,21 +45,13 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   
   We can build bigger multiplexers using smaller multiplexers. For example, a 4:1 multiplexer can be built using 2:1 multiplexers as shown below.
   
-  ![4_1_Mux](../Week%203/images/Capture3.PNG)
-  
   Finally comes a small exercise wherein I have constructed a small 32-bit calculator using various TL-V operators.
   
   ![CombCalc](../Week%203/images/Capture1.PNG)
   
   ### Sequential Logic
   
-  Sequential Logic is sequenced by a clock signal. Let's start out by considering the simplest sequential circuit i.e. the D-Flip Flop. A D-Flip Flop transitions next state to current state on a rising clock edge.
-  
-  ![DFF](../Week%203/images/Capture4.PNG)
-  
-  A sequential circuit can be used as a state machine with DFFs and combinational logic, sequenced by a clk signal.
-  
-  ![SeqCir](../Week%203/images/Capture5.PNG)
+  Sequential Logic is sequenced by a clock signal. Let's start out by considering the simplest sequential circuit i.e. the D-Flip Flop. A D-Flip Flop transitions next state to current state on a rising clock edge. A sequential circuit can be used as a state machine with DFFs and combinational logic, sequenced by a clk signal.
   
   Let's look at a free-running 4-bit counter. This counter counts from 0 to F (which is a sequence of numbers with next number equal to the current number incremented by 1) and rolls over beyond that. We can reimagine the output of the counter as the output of the adder circuit whose inputs are the previous output of the adder and 1. This circuit is modelled in TL-Verilog as:
   
