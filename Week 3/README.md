@@ -240,7 +240,7 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   
   ![Program](../Week%203/images/Capture48.PNG)
   
-  Since the program itself is covered already, I'll showcase the important details. The presentation is made more investigative and observational to keep the readers engaged. 
+  Since the program itself is covered already, I'll showcase the important details in an exploratory way.
   
   <details><summary><b><u><ins>Click here to view the results!</ins></u></b></summary>
   
