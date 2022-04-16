@@ -296,3 +296,11 @@ This directory is dedicated to explaining/reporting my design of RISC-V core usi
   </p>
     
   </details>
+  
+  ### Waveforms:
+  
+  ![Waveforms](../Week%203/images/Capture61.PNG)
+  
+  ![Waveforms](../Week%203/images/Capture62.PNG)
+  
+  ![Waveforms](../Week%203/images/Capture63.PNG)
