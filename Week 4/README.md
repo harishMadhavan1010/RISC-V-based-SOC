@@ -14,9 +14,9 @@ This directory is dedicated to share my experiences in integrating PLL and RISC-
 
 The following are the specifications of the VSD-PLL.
 
-![PLL](../Week%204/images/Capture9.PNG)
+![PLL](../Week%204/images/Capture9.png)
 
-![PLL](../Week%204/images/Capture10.PNG)
+![PLL](../Week%204/images/Capture10.png)
 
 ## Pre-Synthesis Simulations
 
