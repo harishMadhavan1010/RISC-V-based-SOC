@@ -48,7 +48,7 @@ The following commands are run to simulate the interfacing of PLL and myth.
   gtkwave tb_pllcore.vcd
 ```
  
-![PLLCore](../Week%204/images/Capture1.png)
+![PLLCore](../Week%204/images/Capture1.PNG)
  
 ## Synthesis
  
@@ -86,10 +86,10 @@ The results and the shortcomings are posted in the next section.
 
 The following is the result of the GLS and we can see how the output stays crowbarred for all clock cycles which is not the intended functionality (and hence a mismatch).
 
-![PLLCore](../Week%204/images/Capture5.png)
+![PLLCore](../Week%204/images/Capture5.PNG)
 
 The sources of the mismatch probably are my PLL file or my .lib file as I have even used the default mythcore file available in the repository shared previously instead of mine to avoid any other error on top of this. After debugging and figuring out where I am going wrong, this repository will be updated. The following is a segment of my PLL file.
 
-![PLLfile](../Week%204/images/Capture6.png)
+![PLLfile](../Week%204/images/Capture6.PNG)
 
 Here, I have used IEEE 754 FP standards to implement the non-synthesizable `real` construct which I specifically think is the source.
