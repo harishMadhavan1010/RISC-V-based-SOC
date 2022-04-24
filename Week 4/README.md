@@ -40,9 +40,9 @@ The following commands are run to simulate the interfacing of PLL and myth.
 
 ```  iverilog rvmyth_pll.v rvmyth_pll_tb.v
  ./a.out
- gtkwave tb_pllcore.vcd```
+ gtkwave tb_pllcore.vcd ```
  
- ![PLLCore](../Week%204/images/Capture3.png)
+![PLLCore](../Week%204/images/Capture3.png)
  
- ## Synthesis
+## Synthesis
  
