@@ -14,9 +14,9 @@ This directory is dedicated to share my experiences in integrating PLL and RISC-
 
 The following are the specifications of the VSD-PLL.
 
-![PLL](../Week%204/images/Capture9.png)
+![PLL](../Week%204/images/Capture9.PNG)
 
-![PLL](../Week%204/images/Capture10.png)
+![PLL](../Week%204/images/Capture10.PNG)
 
 ## Pre-Synthesis Simulations
 
@@ -28,7 +28,7 @@ First of all, relevant files are cloned from GitHub using `git clone https://git
   gtkwave tb_mythcore_test.vcd 
 ```
   
-![Core](../Week%204/images/Capture2.png)
+![Core](../Week%204/images/Capture2.PNG)
 
 The following commands are run to simulate the PLL.
 
@@ -38,7 +38,7 @@ The following commands are run to simulate the PLL.
   gtkwave tb_pll.vcd
 ```
 
-![PLL](../Week%204/images/Capture3.png)
+![PLL](../Week%204/images/Capture3.PNG)
 
 The following commands are run to simulate the interfacing of PLL and myth.
 
