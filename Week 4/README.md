@@ -22,7 +22,7 @@ The following are the specifications of the VSD-PLL.
 
 First of all, relevant files are cloned from GitHub using `git clone https://github.com/kunalg123/rvmyth/`. Now, the following commands are run in the terminal to simulate the rvmyth.
 
-```   iverilog mythcore_test.v tb_mythcore_test.v 
+  ```  iverilog mythcore_test.v tb_mythcore_test.v 
   ./a.out
   gtkwave tb_mythcore_test.vcd ```
   
@@ -30,7 +30,7 @@ First of all, relevant files are cloned from GitHub using `git clone https://git
 
 The following commands are run to simulate the PLL.
 
-```  iverilog avsd_pll_1v8.v pll_tb.v
+  ```  iverilog avsd_pll_1v8.v pll_tb.v
   ./a.out
   gtkwave tb_pll.vcd```
 
@@ -38,7 +38,7 @@ The following commands are run to simulate the PLL.
 
 The following commands are run to simulate the interfacing of PLL and myth.
 
-```  iverilog rvmyth_pll.v rvmyth_pll_tb.v
+  ```  iverilog rvmyth_pll.v rvmyth_pll_tb.v
  ./a.out
  gtkwave tb_pllcore.vcd ```
  
