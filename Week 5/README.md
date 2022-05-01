@@ -15,7 +15,7 @@ This directory is dedicated to share my experiences in integrating PLL and RISC-
 
 The following image is the DAC we are trying to implement.
 
-![DAC](../Week%204/images/Capture4.png)
+![DAC](../Week%205/images/Capture4.png)
 
 ## DAC Pre-synthesis Simulation
 
@@ -27,7 +27,7 @@ First of all, relevant files are cloned from GitHub using `git clone https://git
   gtkwave tb_avsddac.vcd
 ```
   
-![dac](../Week%204/images/Capture3.PNG)
+![dac](../Week%205/images/Capture3.PNG)
 
 The following commands are run in the terminal for pre-synthesis simulation of the interface.
 
@@ -37,7 +37,7 @@ The following commands are run in the terminal for pre-synthesis simulation of t
   gtkwave tb_daccore.vcd
 ```
 
-![daccore](../Week%204/images/Capture1.PNG)
+![daccore](../Week%205/images/Capture1.PNG)
 
 ## DAC Post-synthesis Simulation
 
@@ -61,18 +61,19 @@ iverilog primitives.v sky130_fd_sc_hd.v daccore_synth.v daccore_tb.v avsddac.v
 gtkwave tb_daccore.vcd
 ```
 
-![postsynth](../Week%204/images/Capture2.PNG)
+![postsynth](../Week%205/images/Capture2.PNG)
 
 ## Openlane
 
-> Openlane is an automated RTL to GDSII flow based on various tools like OpenROAD, Yosys, Magic, Netgen, Fault, SPEF-Extractor and custom methodology scripts for design exploration and optimization. I have followed the steps advised in this repository for getting my Openlane setup: https://github.com/nickson-jose/openlane_build_script. I have simulated a simple design, "spm", to verify if the tools are working correctly. The following are the steps to achieve the required result.
+> Openlane is an automated RTL to GDSII flow based on various tools like OpenROAD, Yosys, Magic, Netgen, Fault, SPEF-Extractor and custom methodology scripts for design exploration and optimization. I have followed the steps advised in this repository for getting my Openlane setup: https://github.com/nickson-jose/openlane_build_script. I have simulated a simple design, "spm", to verify if the tools are working correctly. The following are the steps to obtain success (once we get the tool setup properly).
 
 ```
-<>
+docker run -it -v $(pwd):/openlane -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:mpw-4
+./flow.tcl -design spm
 ```
 
+![spm](../Week%205/images/Capture5.PNG)
 
+## Conclusion and Results
 
-## Conclusion
-
-Hello
+So far, the preliminary results have been obtained. I have debugged and thereby removed the synthesis-simulation mismatches. The error actually arises due to dfflibmap which simply skips cells if they don't match. This can be solved by using `-prepare` flag which forces it to include a best-fit DFF instead of not fitting anything. The PLL post-sythesis simulations will also be shown in the report soon. I intend to start doing the physical design of all of the components after this.
