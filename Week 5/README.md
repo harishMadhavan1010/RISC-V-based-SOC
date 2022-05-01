@@ -76,4 +76,12 @@ docker run -it -v $(pwd):/openlane -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT 
 
 ## Conclusion and Results
 
-So far, the preliminary results have been obtained. I have debugged and thereby removed the synthesis-simulation mismatches. The error actually arises due to dfflibmap which simply skips cells if they don't match. This can be solved by using `-prepare` flag which forces it to include a best-fit DFF instead of not fitting anything. The PLL post-sythesis simulations will also be shown in the report soon. I intend to start doing the physical design of all of the components after this.
+So far, the preliminary results have been obtained. I have debugged and thereby removed the synthesis-simulation mismatches. The error actually arises due to dfflibmap which simply skips cells if they don't match. This can be solved by using `-prepare` flag which forces it to include a best-fit DFF instead of not fitting anything.
+
+`
+Future Plans:
+
+- Report describing PLL post-synth simulations
+- Re-organizing the workspace
+- Physical Design of the components
+`
