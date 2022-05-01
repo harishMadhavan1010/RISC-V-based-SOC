@@ -72,7 +72,7 @@ docker run -it -v $(pwd):/openlane -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT 
 ./flow.tcl -design spm
 ```
 
-![spm](../Week%205/images/Capture5.PNG)
+![spm](../Week%205/images/Capture4.PNG)
 
 ## Conclusion and Results
 
