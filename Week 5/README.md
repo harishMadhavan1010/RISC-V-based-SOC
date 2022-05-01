@@ -15,7 +15,7 @@ This directory is dedicated to share my experiences in integrating PLL and RISC-
 
 The following image is the DAC we are trying to implement.
 
-![DAC](../Week%205/images/Capture4.png)
+![DAC](../Week%205/images/Capture5.png)
 
 ## DAC Pre-synthesis Simulation
 
