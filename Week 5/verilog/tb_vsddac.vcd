@@ -1,0 +1,86 @@
+$date
+	Sun May  1 16:53:58 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module avsddac_tb $end
+$var reg 10 ! D [9:0] $end
+$var reg 1 " EN $end
+$var real 1 # VREFH $end
+$var real 1 $ VREFL $end
+$var real 1 % OUT $end
+$scope module dut $end
+$var wire 10 & D [9:0] $end
+$var wire 1 ' EN $end
+$var wire 11 ( Dext [10:0] $end
+$var real 1 ) NaN $end
+$var real 1 * OUT $end
+$var real 1 + VREFH $end
+$var real 1 , VREFL $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+r0 ,
+r3.3 +
+r0 *
+rnan )
+b0xxxxxxxxxx (
+1'
+bx &
+r0 %
+r0 $
+r3.3 #
+0"
+bx !
+$end
+#5000
+1"
+#10000
+r3.3 %
+r3.3 *
+b1111111111 (
+b1111111111 !
+b1111111111 &
+#20000
+r1.532258064516129 %
+r1.532258064516129 *
+b111011011 (
+b111011011 !
+b111011011 &
+#30000
+r3.296774193548387 %
+r3.296774193548387 *
+b1111111110 (
+b1111111110 !
+b1111111110 &
+#40000
+r3.283870967741935 %
+r3.283870967741935 *
+b1111111010 (
+b1111111010 !
+b1111111010 &
+#50000
+r0.5193548387096774 %
+r0.5193548387096774 *
+b10100001 (
+b10100001 !
+b10100001 &
+#60000
+r0 %
+r0 *
+b0 (
+b0 !
+b0 &
+#70000
+r1.958064516129032 %
+r1.958064516129032 *
+b1001011111 (
+b1001011111 !
+b1001011111 &
+#300000
