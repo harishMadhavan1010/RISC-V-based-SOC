@@ -13,17 +13,65 @@ This directory is dedicated to share my experiences in integrating PLL and RISC-
 
 > Our objective is to integrate rvmyth with DAC before proceeding onto Openlane. Here, rvmyth is the RISC-V core and DAC converts the digital output coming out of the core into an analog output. Since DAC is an analog block, it can't be written using synthesizable constructs in verilog. Hence, a functional verilog code is written to make it work and an interface is created between the core and DAC because the core is a digital block. Opensource tools like iverilog, gtkwave and yosys are used to perform this.
 
+The following image is the DAC we are trying to implement.
+
+![DAC](../Week%204/images/Capture4.png)
+
 ## DAC Pre-synthesis Simulation
 
-Hello
+First of all, relevant files are cloned from GitHub using `git clone https://github.com/kunalg123/rvmyth/`. Then, sandpiper is used to convert TLV files (used for developing rvmyth) to verilog files. Now, the following commands are run in the terminal to simulate the DAC.
+
+```  
+  iverilog avsddac.v avsddac_tb.v
+  ./a.out
+  gtkwave tb_avsddac.vcd
+```
+  
+![dac](../Week%204/images/Capture3.PNG)
+
+The following commands are run in the terminal for pre-synthesis simulation of the interface.
+
+```
+  iverilog daccore.v daccore_tb.v
+  ./a.out
+  gtkwave tb_daccore.vcd
+```
+
+![daccore](../Week%204/images/Capture1.PNG)
 
 ## DAC Post-synthesis Simulation
 
-Hello
+Synthesis is performed using yosys. First, yosys command is run in the terminal after which the following commands are executed.
+
+```
+read_verilog daccore.v 
+read_liberty -lib avsddac.lib 
+read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80.lib 
+synth -top daccore
+dfflibmap -prepare -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D}
+write_verilog -noattr daccore_synth.v 
+```
+
+Now, Gate-Level Simulation is run by executing the following commands in the terminal.
+
+```
+iverilog primitives.v sky130_fd_sc_hd.v daccore_synth.v daccore_tb.v avsddac.v
+./a.out
+gtkwave tb_daccore.vcd
+```
+
+![postsynth](../Week%204/images/Capture2.PNG)
 
 ## Openlane
 
-Hello
+> Openlane is an automated RTL to GDSII flow based on various tools like OpenROAD, Yosys, Magic, Netgen, Fault, SPEF-Extractor and custom methodology scripts for design exploration and optimization. I have followed the steps advised in this repository for getting my Openlane setup: https://github.com/nickson-jose/openlane_build_script. I have simulated a simple design, "spm", to verify if the tools are working correctly. The following are the steps to achieve the required result.
+
+```
+<>
+```
+
+
 
 ## Conclusion
 
