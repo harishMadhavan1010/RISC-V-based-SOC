@@ -61,7 +61,7 @@ read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80.lib
 synth -top pllcore
 dfflibmap -prepare -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D} 
-write_verilog -noattr pllcore.synth.v 
+write_verilog -noattr pllcore_synth.v 
 ```
 
 ## Post-Synthesis Simulation
@@ -69,7 +69,7 @@ write_verilog -noattr pllcore.synth.v
 Now, Gate-Level Simulation is run by executing the following commands in the terminal. 
 
 ```
-iverilog primitives.v sky130_fd_sc_hd.v pllcore.synth.v pllcore_tb.v
+iverilog primitives.v sky130_fd_sc_hd.v pllcore_synth.v pllcore_tb.v avsdpll.v
 ./a.out
 gtkwave tb_pllcore.vcd
 ```
