@@ -80,6 +80,8 @@ iverilog primitives.v sky130_fd_sc_hd.v pllcore.synth.v pllcore_tb.v
 gtkwave tb_pllcore.vcd
 ```
 
+The following image is the post-synthesis simulation of the PLL.
+
 ![post-synth](../Week%204/images/Capture11.PNG)
 
 The results and the shortcomings are posted in the next section.
@@ -91,3 +93,5 @@ The following was (now fixed) the result of the GLS and we can see how the outpu
 ![PLLCore](../Week%204/images/Capture5.PNG)
 
 The sources of the mismatch probably are my PLL file or my .lib file as I have even used the default mythcore file available in the repository shared previously instead of mine to avoid any other error on top of this. After debugging and figuring out where I am going wrong, this repository will be updated. My original PLL file was flawed and for unknown reasons, didn't let total simulation ticks go beyond 384000 ticks (384ns) which severely hindered my post-synth simulation showcase and hence I have removed IEEE floating-point syntax (which I formerly included to replace `real`). This makes the simulation run as intended. Instead, I have converted pll verilog file to liberty file and made that be read by yosys.
+
+> However, there still is a trivial mismatch between the pre-synth simulation and GLS. We can notice how in the pre-synth simulation, right as the reset goes low, out immediately changes to 0. But, in the GLS, it remains crowbarred for a short while. Apart from this minor shift in out, everything else remain one-to-one.
