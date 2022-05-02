@@ -80,16 +80,14 @@ iverilog primitives.v sky130_fd_sc_hd.v pllcore.synth.v pllcore_tb.v
 gtkwave tb_pllcore.vcd
 ```
 
+![post-synth](../Week%204/images/Capture11.PNG)
+
 The results and the shortcomings are posted in the next section.
 
 ## Results and Conclusion
 
-The following is the result of the GLS and we can see how the output stays crowbarred for all clock cycles which is not the intended functionality (and hence a mismatch).
+The following was (now fixed) the result of the GLS and we can see how the output stays crowbarred for all clock cycles which is not the intended functionality (and hence a mismatch).
 
 ![PLLCore](../Week%204/images/Capture5.PNG)
 
-The sources of the mismatch probably are my PLL file or my .lib file as I have even used the default mythcore file available in the repository shared previously instead of mine to avoid any other error on top of this. After debugging and figuring out where I am going wrong, this repository will be updated. The following is a segment of my PLL file.
-
-![PLLfile](../Week%204/images/Capture6.PNG)
-
-Here, I have used IEEE 754 FP standards to implement the non-synthesizable `real` construct which I specifically think is the source.
+The sources of the mismatch probably are my PLL file or my .lib file as I have even used the default mythcore file available in the repository shared previously instead of mine to avoid any other error on top of this. After debugging and figuring out where I am going wrong, this repository will be updated. My original PLL file was flawed and for unknown reasons, didn't let total simulation ticks go beyond 384000 ticks (384ns) which severely hindered my post-synth simulation showcase and hence I have removed IEEE floating-point syntax (which I formerly included to replace `real`). This makes the simulation run as intended. Instead, I have converted pll verilog file to liberty file and made that be read by yosys.
