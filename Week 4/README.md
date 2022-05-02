@@ -2,11 +2,11 @@
 This directory is dedicated to share my experiences in integrating PLL and RISC-V core.
 
 ## Table of Contents
-* [Introduction]()
-* [Pre-Synthesis Simulations]()
-* [Synthesis]()
-* [Post-Synthesis Simulation]()
-* [Results and Conclusion]()
+* [Introduction](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%204/README.md#introduction)
+* [Pre-Synthesis Simulations](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%204/README.md#pre-synthesis-simulations)
+* [Synthesis](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%204/README.md#synthesis)
+* [Post-Synthesis Simulation](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%204/README.md#post-synthesis-simulations)
+* [Results and Conclusion](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%204/README.md#results-and-conclusion)
 
 ## Introduction
 
