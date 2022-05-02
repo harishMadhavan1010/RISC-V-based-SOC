@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
-module avsd_pll_1v8(CLK, VCO_IN, VDDA, VDDD, VSSA, VSSD, EN_VCO, REF);
-  
+module avsd_pll_1v8( CLK, VCO_IN, VDDA, VDDD, VSSA, VSSD, EN_VCO, REF);
+
   input VSSD;
   input EN_VCO;
   input VSSA;
@@ -11,44 +11,36 @@ module avsd_pll_1v8(CLK, VCO_IN, VDDA, VDDD, VSSA, VSSD, EN_VCO, REF);
   input REF;
   
   reg CLK;
-  reg[31:0] period, lastedge, refpd, thisedge;
-  reg[7:0] expdetect;
-  reg[22:0] shiftededge;
-  wire VSSD, VSSA, VDDD, VDDA;
+  real period, lastedge, refpd;
+  wire  VSSD, VSSA, VDDD, VDDA;
+ 
 
   initial begin
-    lastedge = 32'b0_01111111_00000000000000000000000;
-    period = 32'b0_10000011_10010000000000000000000;
-    CLK <= 0;
+     lastedge = 0.0;
+     period = 25.0; // 25ns period = 40MHz
+     CLK <= 0;
   end
 
+  // Toggle clock at rate determined by period
   always @(CLK or EN_VCO) begin
-    if (EN_VCO == 1'b1) begin
-      #(2**(period[30:23]-127) + period[22:0]*(2**(period[30:23]-24-127)));
-      CLK <= (CLK === 1'b0);
-    end
-
-    else if (EN_VCO == 1'b0) begin
-      CLK <= 1'b0;
-    end
-
-    else begin
-      CLK <= 1'bx;
-    end
+     if (EN_VCO == 1'b1) begin
+        #(period / 2.0);
+        CLK <= (CLK === 1'b0);
+     end else if (EN_VCO == 1'b0) begin
+        CLK <= 1'b0;
+     end else begin
+        CLK <= 1'bx;
+     end
   end
-
+   
+  // Update period on every reference rising edge
   always @(posedge REF) begin
-    if ((lastedge[22:0] != 23'b0) && (lastedge[31] == 0)) begin
-      thisedge = $realtime;
-      expdetect = thisedge[30:23] - lastedge[30:23];
-      shiftededge = lastedge[22:0] >> expdetect;
-      refpd = thisedge[22:0] - shiftededge;
-
-      period = refpd - 32'b0_00000001_00000000000000000000000;
-    end
-
-    lastedge = $realtime;
-
+     if (lastedge > 0.0) begin
+     refpd = $realtime - lastedge;
+        // Adjust period towards 1/8 the reference period
+        //period = (0.99 * period) + (0.01 * (refpd / 8.0));
+        period =  (refpd / 8.0) ;
+     end
+     lastedge = $realtime;
   end
-
 endmodule
