@@ -55,18 +55,12 @@ The following commands are run to simulate the interfacing of PLL and myth.
 Synthesis is performed using yosys. First, `yosys` command is run in the terminal after which the following commands are executed.
 
 ```
-read_verilog rvmyth_pll.v 
-read_liberty -lib avsd_pll_1v8.lib 
+read_verilog pllcore.v 
+read_liberty -lib avsdpll.lib 
 read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80.lib 
 synth -top pllcore
-dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80.lib 
-opt 
+dfflibmap -prepare -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;scorr;ifraig;retime;{D};strash;dch,-f;map,-M,1,{D} 
-flatten 
-setundef -zero 
-clean -purge 
-rename -enumerate
-stat 
 write_verilog -noattr pllcore.synth.v 
 ```
 
