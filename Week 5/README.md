@@ -6,6 +6,7 @@ This directory is dedicated to share my experiences in integrating PLL and RISC-
    - [Introduction](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%205/README.md#introduction)
    - [DAC Pre-synthesis Simulation](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%205/README.md#dac-pre-synthesis-simulation)
    - [DAC Post-synthesis Simulation](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%205/README.md#dac-post-synthesis-simulation)
+   - [VSDBABYSOC](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%205/README.md#vsdbabysoc)
    - [Openlane](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%205/README.md#openlane)
    - [Conclusion](https://github.com/harishMadhavan1010/RISC-V-based-SOC/blob/main/Week%205/README.md#conclusion)
 
@@ -41,7 +42,7 @@ The following commands are run in the terminal for pre-synthesis simulation of t
 
 ## DAC Post-synthesis Simulation
 
-Synthesis is performed using yosys. First, yosys command is run in the terminal after which the following commands are executed.
+Synthesis is performed using yosys. First, yosys command is run in the terminal after which the following commands are executed. (Note that `real` can't be synthesized and remove that keyword in necessary files before synthesis)
 
 ```
 read_verilog daccore.v 
@@ -62,6 +63,22 @@ gtkwave tb_daccore.vcd
 ```
 
 ![postsynth](../Week%205/images/Capture2.PNG)
+
+## VSDBABYSOC
+
+> Now that PLL and rvmyth are interfaced and rvmyth and DAC are interfaced, it's time to bring all of them together. PLL serves as a clock multiplier, rvmyth serves as a RISC-V core (which is a digital block). DAC converts the digital output of the core to an analog output. The process to get the simulation results is the exact same.
+
+**Pre-synthesis Simulation**
+
+![presynth](../Week%205/images/Capture6.PNG)
+
+**Post-synthesis Simulation**
+
+![postsynth](../Week%205/images/Capture7.PNG)
+
+Here is a close-up view of the above result.
+
+![postsynthcloseup](../Week%205/images/Capture8.PNG)
 
 ## Openlane
 
