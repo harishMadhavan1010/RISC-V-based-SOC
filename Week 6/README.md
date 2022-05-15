@@ -53,11 +53,11 @@ OpenLane flow consists of several stages. By default all flow steps are run in s
 
 The following is the .mag file of DAC when `magic -T sky130A.tech avsddac.mag` is executed in the terminal.
 
-![DAC_mag](../Week%206/images/Capture8.png)
+![DAC_mag](../Week%206/images/Capture8.PNG)
 
 Here's a more zoomed-in version of the same.
 
-![DAC_mag](../Week%206/images/Capture9.png)
+![DAC_mag](../Week%206/images/Capture9.PNG)
 
 The following is the DAC design I have implemented in magic.
 
