@@ -51,11 +51,36 @@ OpenLane flow consists of several stages. By default all flow steps are run in s
 
 ## DAC Magic File
 
+The following is the .mag file of DAC when `magic -T sky130A.tech avsddac.mag` is executed in the terminal.
 
+![DAC_mag](../Week%206/images/Capture8.PNG)
+
+The following is the DAC design I have implemented in magic.
+
+![DAC_design](../Week%206/images/Capture7.PNG)
+
+Here, the switches (SPST) can be reduced to SPDT switches which can be designed directly by implementing 2:1 Multiplexers.
 
 ## Current Progress
 
+The openlane tools are set up properly and have been tested. To open the bash window to make use of the docker, `docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) openlane:rc6` is executed. Now, I tried executing the same flow interactively.
 
+```
+package require openlane 0.9
+prep -design rvmyth_avsddac -overwrite
+set lefs 	 [glob $::env(DESIGN_DIR)/src/lef/*.lef]
+add_lefs -src $lefs
+
+run_synthesis
+init_floorplan
+magic -T ~/sky130A.tech lef read ~/merged.lef def read rvmyth_avsddac.floorplan.def
+place_io
+global_placement_or
+detailed_placement
+tap_decap_or
+detailed_placement
+magic -T ~/sky130A.tech lef read ~/merged.lef def read rvmyth_avsddac.placement.def
+```
 
 ## Conclusion
 
