@@ -63,13 +63,17 @@ Here, the switches (SPST) can be reduced to SPDT switches which can be designed 
 
 ## Current Progress
 
-The openlane tools are set up properly and have been tested. To open the bash window to make use of the docker, `docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) openlane:rc6` is executed. Now, I tried executing the same flow interactively.
+The openlane tools are set up properly and have been tested. To open the bash window to make use of the docker, `docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) openlane:rc6` is executed. Before that, necessary directories, verilog files and .lef files are added.
 
 ```
-package require openlane 0.9
-prep -design rvmyth_avsddac -overwrite
-set lefs 	 [glob $::env(DESIGN_DIR)/src/lef/*.lef]
-add_lefs -src $lefs
+./flow.tcl -design rvmyth_avsddac -init_design_config (Creates a config.tcl file)
+
+package require openlane 0.9 (Checks if a package exists and returns the version specified)
+prep -design rvmyth_avsddac -overwrite (prepares a run in openlane or loads a previously stopped run in order to proceed with it.)
+set lefs 	 [glob $::env(DESIGN_DIR)/src/lef/*.lef] (A variable called lefs is created)
+add_lefs -src $lefs (the lef file is added)
+
+The following commands are for executing the openlane flow.
 
 run_synthesis
 init_floorplan
@@ -82,7 +86,15 @@ detailed_placement
 magic -T ~/sky130A.tech lef read ~/merged.lef def read rvmyth_avsddac.placement.def
 ```
 
+A major issue comes up in the synthesis phase for me because DAC uses `real` keyword and uses $itor function (which was discussed last week). These are not synthesizable verilog constructs. However, the new challenge now is that the .lib file (which was a workaround to fix this problem back in Week 4 & 5) is not read by yosys while going through the flow. As of now, I am going through the documentation to solve this issue.
+
+![avsddac_lib](../Week%206/images/Capture3.PNG)
+
+`LIB_SYNTH` is the environmental variable which contains the path to liberty files stored for synthesis and I've checked if the necessary lines exist in the trimmed .lib file.
+
+![lib_synth](../Week%206/images/Capture4.PNG)
+
+![trimmed_lib](../Week%206/images/Capture5.PNG)
+
 ## Conclusion
-
-
 
