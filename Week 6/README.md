@@ -59,11 +59,11 @@ Here's a more zoomed-in version of the same.
 
 ![DAC_mag](../Week%206/images/Capture9.PNG)
 
-The following is the DAC design I have implemented in magic.
+The following is the DAC design I have implemented in magic. Here, the switches (SPST) can be reduced to SPDT switches which can be designed directly by implementing 2:1 Multiplexers.
 
 ![DAC_design](../Week%206/images/Capture7.png)
 
-Here, the switches (SPST) can be reduced to SPDT switches which can be designed directly by implementing 2:1 Multiplexers.
+We then generate a .lef file out of this using `lef write`.
 
 ## Current Progress
 
