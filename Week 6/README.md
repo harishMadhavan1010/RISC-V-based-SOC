@@ -98,3 +98,4 @@ A major issue comes up in the synthesis phase for me because DAC uses `real` key
 
 ## Conclusion
 
+I am working with DAC-rvmyth interface for now as opposed to the entire system because if I get this specific part to work, since the same flow is valid for PLL as well, I can easily execute the flow for the entire SoC design. My work as of now will be to figure out another workaround to perform synthesis.
