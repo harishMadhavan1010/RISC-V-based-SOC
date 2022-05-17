@@ -66,10 +66,52 @@ This week summarizes my experience learning advanced physical design using Openl
    
    ### Openlane
    
-    > Openlane is an automated RTL-GDSII flow based on several components like OpenROAD, yosys, Magic, Netgen, Fault, OpenPhySyn, SPEF-extractor and custom methodology scripts for design exploration and optimization. This week, I have focussed on using openlane to execute the flow of rvmyth-DAC interface. Openlane is containerized. 
+   > Openlane is an automated RTL-GDSII flow based on several components like OpenROAD, yosys, Magic, Netgen, Fault, OpenPhySyn, SPEF-extractor and custom methodology scripts for design exploration and optimization. This week, I have focussed on using openlane to execute the flow of rvmyth-DAC interface. Openlane is containerized. 
     
-    Openlane can be used to harden macros and chips. There are two modes of operation: Autonomous and Interactive. It allows for Design Space Exploration (find the best set of flow configurations).
+   Openlane can be used to harden macros and chips. There are two modes of operation: Autonomous and Interactive. It allows for Design Space Exploration (find the best set of flow configurations).
     
-    The following image depicts the striVe SoC family (which is Open PDK, Open EDA and Open RTL).
+   The following image depicts the striVe SoC family (which is Open PDK, Open EDA and Open RTL).
     
-    IMG Cap 12
+   IMG Cap12
+   
+   ### Openlane ASIC Flow
+   
+   The following block diagram shows the Openlane ASIC Flow.
+   
+   IMG Cap13
+   
+   It starts off with RTL and ends at GDSII. It is to be noted how more complicated this is when compared to the simplified ASIC Flow presented earlier. The various tools used are shown in the following image.
+   
+   IMG Cap14
+   
+   First of all, the RTL synthesis is done which converts RTL code to gate-level netlist. There are various synthesis strategies which Openlane can adopt. Synthesis Exploration capability of Openlane generates a report which compares various aspects like area and timing (using OpenSTA).
+   
+   IMG Cap15
+   
+   Also, Openlane has design exploration which can be used to sweep various design configurations to generate a report like the following.
+   
+   IMG Cap16
+   
+   This design exploration capability is used for regression testing (CI). We run Openlane on ~70 designs and compare results to the best known ones.
+   
+   IMG Cap17
+   
+   After synthesis, in Openlane, there is this optional DFT step. This makes use of Fault to perform Scan Insertion, ATPG, Test Patterns Compaction, Fault Coverage and Fault Simulation.
+   
+   IMG Cap18
+   
+   Then comes the physical implementation which is performed by OpenROAD. An additional step to insert fake antenna diodes next to every cell input after placement is performed here because a metal wire segment when fabricated can act as an antenna (which can damage the transistors) as shown below.
+   
+   IMG Cap19
+      
+   Note that bridging can also be done, however it requires router awareness (and Openlane isn't upto that mark yet).
+   
+   IMG Cap20
+   
+   Also, because of optimizations made earlier in OpenROAD, yosys performs Logic Equivalence Check. Then, the antenna checker is run on Magic and if the checker reports a violation, the fake antenna diode cell is replaced with a real one. The following image illustrates this concept.
+   
+   IMG Cap21
+   
+   Finally, the sign-off involves RC Extraction (DEF2SPEF; extracted from interconnect layer of routed layout), Timing and Physical Verification.
+   
+   ### More details on Openlane
