@@ -19,3 +19,33 @@ This week summarizes my experience learning advanced physical design using Openl
    The following image considers an example (RISC-V core with DAC, ADC, SPI, PLL, etc.) to demonstrate the concept of Macros and IPs. Here, DAC, ADC, SPI and PLL are IPs (Intellectual Properties) because these designs arose out of some specific creative techniques used in the foundries. Macros are reusable assets (which are also IPs) to keep up with the project schedule.
    
    IMG Cap2
+   
+   **What is a PDK?**
+   
+   A PDK is Process Design Kit which to put simply is an interface between the fab and the designers. It is a collection of tools used to model a fabrication process for EDA tools to design an IC like Process Design Rules (DRC, LVS, PEX), Device Models, Digital Standard Cell Libraries, I/O Libraries, etc.
+   
+   ### Simplified ASIC Design Flow
+   
+   The following images shows the simplified version of the ASIC Design Flow.
+   
+   IMG Cap3
+   
+   **Synthesis:** Synthesis converts RTL code to a gate-level netlist (circuit made out of components from the Standard Cell Library). Standard Cells have a regular layout; each of them has different models/views such as electrical, HDL, SPICE and Layout.
+   
+   **Floorplanning:** The objective here is to plan the silicon area and create a robust power distribution network for powering up the circuit. In chip floorplanning, the chip die is partitioned between different system building blocks and I/O pads are placed. In macro floorplanning, the macro dimensions and it's pin locations are defined. Also, the rows and routing tracks are defined. The following images show chip and macro floorplanning respectively.
+   
+   IMG Cap4
+   
+   IMG Cap5
+   
+   **Power Planning:** The power distribution network is constructed. Typically, the chip is powered by multiple VDD and GND pins. The power pins are connected to all components through rings and horizontal and vertical metal straps. Such parallel structures are meant to reduce resistance (IR Drop) and to address electromigration problem. Typically, the PDNs use upper metal layers instead of lower metal ones because they are thicker.
+   
+   IMG Cap6
+   
+   **Placement:** The cells are placed in the floorplanning rows aligned with the sites (close to each other to minimize interconnect delay and to enable successful routing). There are two steps: Global Placement and Detailed Placement. Global Placement finds optimal positioning for the whole cells. Such positioning are not necessarily needed and cells may overlap or go offcourse as a result. In Detailed Placement, the positions of cells obtained on the Global Placement are minimally altered to make them sufficient. The following images show Global and Detailed Placement respectively.
+   
+   IMG Cap7
+   
+   IMG Cap8
+   
+   **Clock Tree Synthesis:** The objective here is to create a Clock Distribution Network to route the clock. We thereby can deliver the clock to power 
