@@ -42,10 +42,30 @@ This week summarizes my experience learning advanced physical design using Openl
    
    IMG Cap6
    
-   **Placement:** The cells are placed in the floorplanning rows aligned with the sites (close to each other to minimize interconnect delay and to enable successful routing). There are two steps: Global Placement and Detailed Placement. Global Placement finds optimal positioning for the whole cells. Such positioning are not necessarily needed and cells may overlap or go offcourse as a result. In Detailed Placement, the positions of cells obtained on the Global Placement are minimally altered to make them sufficient. The following images show Global and Detailed Placement respectively.
+   **Placement:** The cells are placed in the floorplanning rows aligned with the sites (close to each other to minimize interconnect delay and to enable successful routing). 
    
    IMG Cap7
    
+   There are two steps: Global Placement and Detailed Placement. Global Placement finds optimal positioning for the whole cells. Such positioning are not necessarily needed and cells may overlap or go offcourse as a result. In Detailed Placement, the positions of cells obtained on the Global Placement are minimally altered to make them sufficient. The following images show Global and Detailed Placement respectively.
+   
    IMG Cap8
    
-   **Clock Tree Synthesis:** The objective here is to create a Clock Distribution Network to route the clock. We thereby can deliver the clock to power 
+   IMG Cap9
+   
+   **Clock Tree Synthesis:** The objective here is to create a Clock Distribution Network to route the clock. We thereby can deliver the clock to all the sequential cells with minimum skew and in a good shape. The clock network looks like a tree; the clock elements are the leaf nodes and the clock is the root. The clock tree can be a H-Tree, X-Tree, etc.
+   
+   IMG Cap10
+   
+   **Routing:** We implement the interconnect layer using the available metal layers. This involves finding a valid pattern of horizontal and vertical wires to implement the nets that connects the cells together. The metal layers are defined in the PDK by their thickness, pitch (that defines the tracks) and the minimum width. It also defines the vias that connects different metal layers. The skywater PDK consists of six routing layers; the lowest is the local interconnect layer which is made of titanium and the rest is made of aluminium.
+   
+   IMG Cap11
+   
+   Most routers are grid routers. They construct the routing grids out of the metal layer tracks. As the routing grid is huge, a divide and conquer approach is usually used. First, Global Routing is performed using coarse-grained grids which generates routing guides and then, Detailed Routing is performed using fine-grained grids which uses the routing guides to implement the actual wiring.
+   
+   **Sign-off:** Once done with routing, the final layout is constructed which undergoes physical (DRC, LVS) and timing verification (STA).
+   
+   ### Openlane
+   
+    > Openlane is an automated RTL-GDSII flow based on several components like OpenROAD, yosys, Magic, Netgen, Fault, OpenPhySyn, SPEF-extractor and custom methodology scripts for design exploration and optimization. This week, I have focussed on using openlane to execute the flow of rvmyth-DAC interface.
+    
+    
