@@ -1,6 +1,7 @@
 # Advanced Physical Design using Openlane
 
 ## Table of Contents
+
     - [Day 1: Openlane and Sky130 PDK]()
     - [Day 2: Floorplanning and library cells]()
     - [Day 3: ngspice characterization and Magic Layout]()
