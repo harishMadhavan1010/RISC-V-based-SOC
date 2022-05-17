@@ -66,6 +66,10 @@ This week summarizes my experience learning advanced physical design using Openl
    
    ### Openlane
    
-    > Openlane is an automated RTL-GDSII flow based on several components like OpenROAD, yosys, Magic, Netgen, Fault, OpenPhySyn, SPEF-extractor and custom methodology scripts for design exploration and optimization. This week, I have focussed on using openlane to execute the flow of rvmyth-DAC interface.
+    > Openlane is an automated RTL-GDSII flow based on several components like OpenROAD, yosys, Magic, Netgen, Fault, OpenPhySyn, SPEF-extractor and custom methodology scripts for design exploration and optimization. This week, I have focussed on using openlane to execute the flow of rvmyth-DAC interface. Openlane is containerized. 
     
+    Openlane can be used to harden macros and chips. There are two modes of operation: Autonomous and Interactive. It allows for Design Space Exploration (find the best set of flow configurations).
     
+    The following image depicts the striVe SoC family (which is Open PDK, Open EDA and Open RTL).
+    
+    IMG Cap 12
