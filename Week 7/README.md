@@ -4,7 +4,7 @@ This week summarizes my experience learning advanced physical design using Openl
 
 ## Table of Contents
 
-    - [Day 1: Openlane and Sky130 PDK]()
+   - [Day 1: Openlane and Sky130 PDK]()
    - [Day 2: Floorplanning and library cells]()
    - [Day 3: ngspice characterization and Magic Layout]()
    - [Day 4: Timing Analysis and Clock Tree Synthesis]()
@@ -12,4 +12,4 @@ This week summarizes my experience learning advanced physical design using Openl
 
 ## Openlane and Sky130 PDK
 
-    Hello
+   Hello
