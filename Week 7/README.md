@@ -113,3 +113,25 @@ This week summarizes my experience learning advanced physical design using Openl
    ![AdvPD](../Week%207/images/Capture21.PNG)
          
    Finally, the sign-off involves RC Extraction (DEF2SPEF; extracted from interconnect layer of routed layout), Timing and Physical Verification.
+
+## Necessary Lab Task Images
+   
+   ![AdvPD](../Week%207/images/Capture22.PNG)
+   
+   ![AdvPD](../Week%207/images/Capture23.PNG)
+   
+   ![AdvPD](../Week%207/images/Capture24.PNG)
+   
+   ![AdvPD](../Week%207/images/Capture25.PNG)
+   
+   ![AdvPD](../Week%207/images/Capture26.PNG)
+   
+   ![AdvPD](../Week%207/images/Capture27.PNG)
+   
+   ![AdvPD](../Week%207/images/Capture28.PNG)
+   
+   ![AdvPD](../Week%207/images/Capture29.PNG)
+   
+   ![AdvPD](../Week%207/images/Capture30.PNG)
+   
+   ![AdvPD](../Week%207/images/Capture31.PNG)
