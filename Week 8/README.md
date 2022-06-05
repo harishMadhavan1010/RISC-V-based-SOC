@@ -15,7 +15,7 @@ The following figure contains the issue I had been facing.
 
 ## Current Problems:
 
-While trying to close timing on rvmyth and to create a .gds and .lef file out of that, I am facing some hold time violations and several (49999) DRC errors. I haven't figured a way to automatically correct the DRC errors. To resolve hold time violations, I decided to do synthesis exploration to check what the least delay is. The following image showcases the STA report.
+While trying to close timing on rvmyth core and to create a .gds and .lef file out of that, I am facing some hold time violations and several (49999) DRC errors. I haven't figured a way to automatically correct the DRC errors. To resolve hold time violations, I decided to do synthesis exploration to check what the least delay is. The following image showcases the STA report.
 
 The following images contain the issue I am facing; the former two showcases the timing closure problems and the final one showcasing errors with the GDS file.
 
